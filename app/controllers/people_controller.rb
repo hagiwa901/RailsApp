@@ -33,6 +33,12 @@ class PeopleController < ApplicationController
     obj.update(person_params)
     redirect_to '/people'
   end
+
+  def delete
+    obj = Person.find(params[:id])
+    obj.destroy
+    redirect_to '/people'
+  end
 end
 
 private
