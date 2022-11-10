@@ -1,6 +1,6 @@
-<h1>Cards#add</h1>
+<h1 class="display-4 text-primary">Cards#add</h1>
 <p>※登録する読書データを入力してください。</p>
-<%= form_for(@card, url:{controller:'cards', action:'add'}) do |form|>
+<%= form_for(@card, url:{controller:'cards', action:'add'}) do |form| %>
     <div class="form-group">
         <label for="title">タイトル</label>
         <%= form.text_field :title,{class:"form-control"} %>
