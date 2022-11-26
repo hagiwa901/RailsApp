@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  layout 'people'
   def index
     @msg = 'Person data.'
     @data = Person.all
@@ -15,12 +16,12 @@ class PeopleController < ApplicationController
   end
 
   def create
-    if request.post? then
-      Person.create(
-        person_params
-      )
+    @person = Person.new person_params
+    if @person.save then
+      redirect_to '/people'
+    else
+      render "add"
     end
-    redirect_to '/people'
   end
 
   def edit
@@ -38,6 +39,17 @@ class PeopleController < ApplicationController
     obj = Person.find(params[:id])
     obj.destroy
     redirect_to '/people'
+  end
+
+  def find
+    @msg = 'please type search word...'
+    @people = Array.new
+    if request.post? then
+      f = params[:find].split(',')
+      @people = Person.all.limit(f[0]).offset(f[1])
+    else
+      @people = Person.all
+    end
   end
 end
 
