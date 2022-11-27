@@ -9,5 +9,8 @@
         <td><%= @data.age %></td></tr>
     <tr><th>Mail</th>
         <td><%= @data.mail %></td></tr>
+    <tr><th>Message</th>
+        <td><%= @data.message != nil ? @data.message.title : 'none' %>
+            </td></tr>
     </tr>
 </table>
